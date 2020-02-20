@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'custom_card.dart';
-import 'second_page.dart';
+import 'detail_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,30 +45,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget cardPageView() {
     return Container(
-      height: 300,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context,
-              PageRouteBuilder(
-                transitionDuration: Duration(milliseconds: 500),
-                pageBuilder: (_, __, ___) => SecondPage(),
-              ));
-        },
-        child: PageView(
-          // store this controller in a State to save the carousel scroll position
-          controller: PageController(viewportFraction: 0.8),
-          children: <Widget>[
-            for(var item in itemList ) Container(
-              // 間隔が狭くなるので若干marginを付けてあげる
-              margin: EdgeInsets.only(
-                  right: 10,
-                  bottom: 20
-              ),
-              child: CustomCard(),
-            )
-          ],
-        ),
+      height: 315,
+      child: PageView(
+        // store this controller in a State to save the carousel scroll position
+        controller: PageController(viewportFraction: 0.8),
+        children: <Widget>[
+          for(var item in itemList ) Container(
+            // 間隔が狭くなるので若干marginを付けてあげる
+            margin: EdgeInsets.only(
+                right: 10,
+                bottom: 20
+            ),
+            child: CustomCard(item),
+          )
+        ],
       ),
     );
   }

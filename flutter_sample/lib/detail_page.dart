@@ -1,22 +1,36 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
 
-class SecondPage extends StatelessWidget {
+class DetailPage extends StatelessWidget {
+  String heroTag;
+
+  DetailPage(String heroTag) {
+    this.heroTag = heroTag;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
-          children: <Widget>[
-            Container(
-              child: imageContents(context),
-            ),
-            Container(
-              child: Text(
-                'content'
-              ),
-            )
-          ],
+      backgroundColor: Colors.transparent, //Widgetの全体の背景を透明にする
+        body: Hero(
+          tag: heroTag,
+          child: Material(
+            type: MaterialType.transparency,
+              child: Container(
+                color: Colors.white, //HeroWidget以下のツリーの背景を白色にする,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Container(
+                      child: imageContents(context),
+                    ),
+                    Container(
+                      child: Text('content'),
+                    )
+                  ],
+                ),
+              )
+          )
         )
     );
   }
@@ -50,6 +64,9 @@ class SecondPage extends StatelessWidget {
                                 onPressed: () {
                                   Navigator.pop(
                                     context,
+                                    MaterialPageRoute(builder: (context) {
+                                      return MyApp();
+                                    }),
                                   );
                                 },
                               ),
