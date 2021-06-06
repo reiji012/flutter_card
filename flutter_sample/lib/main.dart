@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -47,17 +47,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       height: 315,
       child: PageView(
-        // store this controller in a State to save the carousel scroll position
         controller: PageController(viewportFraction: 0.8),
         children: <Widget>[
-          for(var item in itemList ) Container(
-            // 間隔が狭くなるので若干marginを付けてあげる
-            margin: EdgeInsets.only(
-                right: 10,
-                bottom: 20
-            ),
-            child: CustomCard(item),
-          )
+          for (var item in itemList)
+            Container(
+              // 間隔が狭くなるので若干marginを付けてあげる
+              margin: EdgeInsets.only(right: 10, bottom: 20),
+              child: CustomCard(item),
+            )
         ],
       ),
     );

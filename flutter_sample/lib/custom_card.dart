@@ -2,30 +2,24 @@ import 'package:flutter/material.dart';
 import 'detail_page.dart';
 
 class CustomCard extends StatefulWidget {
+  CustomCard(this.heroTag);
+
   String heroTag;
 
-  CustomCard(String heroTag) {
-    this.heroTag = heroTag;
-  }
-
   @override
-  State<StatefulWidget> createState () {
-    // TODO: implement createState
+  State<StatefulWidget> createState() {
     return CustomCardState(heroTag);
   }
 }
 
 class CustomCardState extends State<CustomCard> {
+  CustomCardState(this.heroTag);
+
   String heroTag;
   var _hasPadding = false;
 
-  CustomCardState(String heroTag) {
-    this.heroTag = heroTag;
-  }
-
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Hero(
       tag: heroTag,
       child: Material(
@@ -71,7 +65,7 @@ class CustomCardState extends State<CustomCard> {
             alignment: Alignment.topCenter,
             child: Image.asset('image/image.jpg', fit: BoxFit.fill),
           ),
-          elevation:10,
+          elevation: 10,
         ),
       ),
     );
